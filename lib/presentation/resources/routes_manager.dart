@@ -2,6 +2,7 @@
 import 'package:app_with_clean_arch/presentation/forget_password/forget_password_view.dart';
 import 'package:app_with_clean_arch/presentation/login/login_view.dart';
 import 'package:app_with_clean_arch/presentation/main/main_view.dart';
+import 'package:app_with_clean_arch/presentation/onboarding/onboarding_view.dart';
 import 'package:app_with_clean_arch/presentation/register/register_view.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/splash/splash_view.dart';
@@ -12,6 +13,7 @@ class Routes {
   static const String splashRoute = "/";
   static const String loginRoute = "/login";
   static const String registerRoute = "/register";
+  static const String onboardingRoute = "/onboarding";
   static const String forgotPasswordRoute = "/forgotPassword";
   static const String mainRoute = "/main";
   static const String storeDetailsRoute = "/storeDetails";
@@ -26,6 +28,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterView());
+      case Routes.onboardingRoute:
+        return MaterialPageRoute(builder: (_) => const OnboardingView());
       case Routes.forgotPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
       case Routes.mainRoute:
