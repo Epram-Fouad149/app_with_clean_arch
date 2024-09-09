@@ -5,9 +5,7 @@ import 'package:app_with_clean_arch/presentation/resources/routes_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/value_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-
+ import 'package:flutter_svg/svg.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -22,15 +20,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   int _currentIndex = 0;
 
   List<SliderObject> _getSliderData() => [
-    SliderObject(AppStrings.onBoardingTitle1,
-        AppStrings.onBoardingSubTitle1, ImageAssets.onboardingLogo1),
-    SliderObject(AppStrings.onBoardingTitle2,
-        AppStrings.onBoardingSubTitle2, ImageAssets.onboardingLogo2),
-    SliderObject(AppStrings.onBoardingTitle3,
-        AppStrings.onBoardingSubTitle3, ImageAssets.onboardingLogo3),
-    SliderObject(AppStrings.onBoardingTitle4,
-        AppStrings.onBoardingSubTitle4, ImageAssets.onboardingLogo4),
-  ];
+        SliderObject(AppStrings.onBoardingTitle1, AppStrings.onBoardingSubTitle1, ImageAssets.onboardingLogo1),
+        SliderObject(AppStrings.onBoardingTitle2, AppStrings.onBoardingSubTitle2, ImageAssets.onboardingLogo2),
+        SliderObject(AppStrings.onBoardingTitle3, AppStrings.onBoardingSubTitle3, ImageAssets.onboardingLogo3),
+        SliderObject(AppStrings.onBoardingTitle4, AppStrings.onBoardingSubTitle4, ImageAssets.onboardingLogo4),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +33,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       appBar: AppBar(
         backgroundColor: ColorManager.white,
         elevation: AppSize.s0,
-        systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: ColorManager.white,
-            statusBarBrightness: Brightness.dark),
       ),
       body: PageView.builder(
           controller: _pageController,
@@ -72,8 +63,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 ),
               ),
             ),
-
-            // widgets indicator and arrows
             _getBottomSheetWidget()
           ],
         ),
@@ -87,7 +76,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // left arrow
           Padding(
             padding: const EdgeInsets.all(AppPadding.p14),
             child: GestureDetector(
@@ -97,19 +85,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 child: SvgPicture.asset(ImageAssets.leftArrowIc),
               ),
               onTap: () {
-                // go to previous slide
                 _pageController.animateToPage(_getPreviousIndex(),
-                    duration: const Duration(
-                        milliseconds: AppConstants.sliderAnimationTime),
+                    duration: const Duration(milliseconds: AppConstants.sliderAnimationTime),
                     curve: Curves.bounceInOut);
               },
             ),
-          )
-
-// circle indicator
-
-          // right arrow
-          ,
+          ),
           Row(
             children: [
               for (int i = 0; i < _list.length; i++)
@@ -128,10 +109,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   child: SvgPicture.asset(ImageAssets.rightArrowIc),
                 ),
                 onTap: () {
-                  // go to previous slide
                   _pageController.animateToPage(_getNextIndex(),
-                      duration: const Duration(
-                          milliseconds: AppConstants.sliderAnimationTime),
+                      duration: const Duration(milliseconds: AppConstants.sliderAnimationTime),
                       curve: Curves.bounceInOut);
                 }),
           )

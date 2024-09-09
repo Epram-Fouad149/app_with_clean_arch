@@ -2,7 +2,7 @@
 import 'package:app_with_clean_arch/presentation/forget_password/forget_password_view.dart';
 import 'package:app_with_clean_arch/presentation/login/login_view.dart';
 import 'package:app_with_clean_arch/presentation/main/main_view.dart';
-import 'package:app_with_clean_arch/presentation/onboarding/onboarding_view.dart';
+import 'package:app_with_clean_arch/presentation/onboarding/view/onboarding_view.dart';
 import 'package:app_with_clean_arch/presentation/register/register_view.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/splash/splash_view.dart';
