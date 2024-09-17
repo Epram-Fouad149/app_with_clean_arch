@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:app_with_clean_arch/base/base_viewmodel.dart';
-import 'package:app_with_clean_arch/domain/models.dart';
+import 'package:app_with_clean_arch/domain/model/models.dart';
 import 'package:app_with_clean_arch/presentation/resources/assets_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 
