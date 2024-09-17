@@ -1,6 +1,5 @@
-
 import 'package:app_with_clean_arch/presentation/forget_password/forget_password_view.dart';
-import 'package:app_with_clean_arch/presentation/login/login_view.dart';
+import 'package:app_with_clean_arch/presentation/login/view/login_view.dart';
 import 'package:app_with_clean_arch/presentation/main/main_view.dart';
 import 'package:app_with_clean_arch/presentation/onboarding/view/onboarding_view.dart';
 import 'package:app_with_clean_arch/presentation/register/register_view.dart';
@@ -44,10 +43,10 @@ class RouteGenerator {
   static Route<dynamic> unDefinedRoute() {
     return MaterialPageRoute(
         builder: (_) => Scaffold(
-          appBar: AppBar(
-            title: const Text(AppStrings.noRouteFound),
-          ),
-          body: const Center(child: Text(AppStrings.noRouteFound)),
-        ));
+              appBar: AppBar(
+                title: const Text(AppStrings.noRouteFound),
+              ),
+              body: const Center(child: Text(AppStrings.noRouteFound)),
+            ));
   }
 }

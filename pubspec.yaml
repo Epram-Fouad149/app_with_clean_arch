@@ -44,6 +44,7 @@ dependencies:
   dio: ^5.7.0
   analyzer: ^6.7.0
   retrofit: ^4.4.1
+  freezed: ^2.5.7
 
 dev_dependencies:
   flutter_test:
