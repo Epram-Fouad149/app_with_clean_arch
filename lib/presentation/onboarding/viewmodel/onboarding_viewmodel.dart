@@ -6,10 +6,12 @@ import 'package:app_with_clean_arch/presentation/resources/assets_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 
 class OnBoardingViewModel extends BaseViewModel implements OnBoardingViewModelInputs, OnBoardingViewModelOutputs {
+  // stream controllers outputs
   final StreamController _streamController = StreamController<SliderViewObject>();
   late final List<SliderObject> _list;
   int _currentIndex = 0;
 
+  //OnBoarding ViewModel Inputs
   @override
   void dispose() {
     _streamController.close();
@@ -17,6 +19,7 @@ class OnBoardingViewModel extends BaseViewModel implements OnBoardingViewModelIn
 
   @override
   void start() {
+    // view model start your job
     _list = _getSliderData();
     _postDataToView();
   }
@@ -24,7 +27,7 @@ class OnBoardingViewModel extends BaseViewModel implements OnBoardingViewModelIn
   @override
   int goNext() {
     int nextIndex = ++_currentIndex;
-    if (nextIndex == _list.length - 1) {
+    if (nextIndex == _list.length) {
       nextIndex = 0;
     }
     return nextIndex;
@@ -48,10 +51,12 @@ class OnBoardingViewModel extends BaseViewModel implements OnBoardingViewModelIn
   @override
   Sink get inputSliderViewObject => _streamController.sink;
 
+  //OnBoarding ViewModel outputs
   @override
   Stream<SliderViewObject> get outputSliderViewObject =>
       _streamController.stream.map((sliderViewObject) => sliderViewObject);
 
+  // onboarding private functions
   void _postDataToView() {
     inputSliderViewObject.add(SliderViewObject(_list[_currentIndex], _list.length, _currentIndex));
   }
@@ -64,9 +69,10 @@ class OnBoardingViewModel extends BaseViewModel implements OnBoardingViewModelIn
       ];
 }
 
+// inputs mean that "Orders" that our view model will receive from view
 abstract class OnBoardingViewModelInputs {
-  int goNext();
-  int goPrevious();
+  int goNext(); // when user clicks on right arrow or swipe left
+  int goPrevious(); // when user clicks on left arrow or swipe right
   void onPageChanged(int index);
 
   // stream controller input

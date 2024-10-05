@@ -1,4 +1,6 @@
+import 'package:app_with_clean_arch/app/app_prefs.dart';
 import 'package:app_with_clean_arch/app/di.dart';
+import 'package:app_with_clean_arch/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:app_with_clean_arch/presentation/login/viewmodel/login_viewmodel.dart';
 import 'package:app_with_clean_arch/presentation/resources/assets_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/color_manager.dart';
@@ -6,9 +8,10 @@ import 'package:app_with_clean_arch/presentation/resources/routes_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/value_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+  const LoginView({Key? key}) : super(key: key);
 
   @override
   _LoginViewState createState() => _LoginViewState();
@@ -16,6 +19,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final LoginViewModel _viewModel = instance<LoginViewModel>();
+  final AppPreferences _appPreferences = instance<AppPreferences>();
+
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _userPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -24,6 +29,16 @@ class _LoginViewState extends State<LoginView> {
     _viewModel.start(); // tell viewmodel, start ur job
     _userNameController.addListener(() => _viewModel.setUserName(_userNameController.text));
     _userPasswordController.addListener(() => _viewModel.setPassword(_userPasswordController.text));
+
+    _viewModel.isUserLoggedInSuccessfullyStreamController.stream.listen((isLoggedIn) {
+      if (isLoggedIn) {
+        // navigate to main screen
+        SchedulerBinding.instance.addPostFrameCallback((_) {
+          _appPreferences.setUserLoggedIn();
+          Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
+        });
+      }
+    });
   }
 
   @override
@@ -34,13 +49,22 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return _getContentWidget();
+    return Scaffold(
+      backgroundColor: ColorManager.white,
+      body: StreamBuilder<FlowState>(
+        stream: _viewModel.outputState,
+        builder: (context, snapshot) {
+          return snapshot.data?.getScreenWidget(context, _getContentWidget(), () {
+                _viewModel.login();
+              }) ??
+              _getContentWidget();
+        },
+      ),
+    );
   }
 
   Widget _getContentWidget() {
-    return Scaffold(
-      backgroundColor: ColorManager.white,
-      body: Container(
+    return Container(
         padding: const EdgeInsets.only(top: AppPadding.p100),
         child: SingleChildScrollView(
           child: Form(
@@ -112,13 +136,13 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, Routes.forgotPasswordRoute);
+                            Navigator.pushNamed(context, Routes.forgotPasswordRoute);
                           },
                           child: Text(AppStrings.forgetPassword, style: Theme.of(context).textTheme.titleMedium),
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, Routes.registerRoute);
+                            Navigator.pushNamed(context, Routes.registerRoute);
                           },
                           child: Text(AppStrings.registerText, style: Theme.of(context).textTheme.titleMedium),
                         )
@@ -127,9 +151,7 @@ class _LoginViewState extends State<LoginView> {
               ],
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   @override
