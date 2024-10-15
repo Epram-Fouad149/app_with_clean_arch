@@ -3,7 +3,7 @@ import 'package:app_with_clean_arch/presentation/forget_password/forget_password
 import 'package:app_with_clean_arch/presentation/login/view/login_view.dart';
 import 'package:app_with_clean_arch/presentation/main/main_view.dart';
 import 'package:app_with_clean_arch/presentation/onboarding/view/onboarding_view.dart';
-import 'package:app_with_clean_arch/presentation/register/register_view.dart';
+import 'package:app_with_clean_arch/presentation/register/view/register_view.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/splash/splash_view.dart';
 import 'package:app_with_clean_arch/presentation/store_details/store_details_view.dart';
@@ -30,6 +30,7 @@ class RouteGenerator {
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
       case Routes.registerRoute:
+        initRegisterModule();
         return MaterialPageRoute(builder: (_) => const RegisterView());
       case Routes.forgotPasswordRoute:
         initForgotPasswordModule();

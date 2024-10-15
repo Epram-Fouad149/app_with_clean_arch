@@ -1,3 +1,5 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 part of 'app_api.dart';
 
 // **************************************************************************
@@ -8,7 +10,7 @@ part of 'app_api.dart';
 
 class _AppServiceClient implements AppServiceClient {
   _AppServiceClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://bormafouad149.wiremockapi.cloud';
+    baseUrl ??= 'https://bormafouad149.wiremockapi.cloud/';
   }
 
   final Dio _dio;
@@ -40,6 +42,28 @@ class _AppServiceClient implements AppServiceClient {
             .compose(_dio.options, '/customers/forgotPassword', queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ForgotPasswordResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AuthenticationResponse> register(
+      userName, countryMobileCode, mobileNumber, email, password, profilePicture) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'user_name': userName,
+      'country_mobile_code': countryMobileCode,
+      'mobile_number': mobileNumber,
+      'email': email,
+      'password': password,
+      'profile_picture': profilePicture
+    };
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<AuthenticationResponse>(
+        Options(method: 'POST', headers: _headers, extra: _extra)
+            .compose(_dio.options, '/customers/register', queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = AuthenticationResponse.fromJson(_result.data!);
     return value;
   }
 
