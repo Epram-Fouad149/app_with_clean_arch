@@ -1,7 +1,7 @@
-import 'package:app_with_clean_arch/presentation/main/pages/home_page.dart';
-import 'package:app_with_clean_arch/presentation/main/pages/notifications_page.dart';
-import 'package:app_with_clean_arch/presentation/main/pages/search_page.dart';
-import 'package:app_with_clean_arch/presentation/main/pages/setting_page.dart';
+import 'package:app_with_clean_arch/presentation/main/pages/home/view/home_page.dart';
+import 'package:app_with_clean_arch/presentation/main/pages/notifications/notifications_page.dart';
+import 'package:app_with_clean_arch/presentation/main/pages/search/search_page.dart';
+import 'package:app_with_clean_arch/presentation/main/pages/settings/setting_page.dart';
 import 'package:app_with_clean_arch/presentation/resources/color_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/value_manager.dart';

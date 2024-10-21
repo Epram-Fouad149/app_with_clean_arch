@@ -10,7 +10,7 @@ part of 'app_api.dart';
 
 class _AppServiceClient implements AppServiceClient {
   _AppServiceClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://bormafouad149.wiremockapi.cloud/';
+    baseUrl ??= 'https://bormafouad149.wiremockapi.cloud';
   }
 
   final Dio _dio;
@@ -64,6 +64,34 @@ class _AppServiceClient implements AppServiceClient {
             .compose(_dio.options, '/customers/register', queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = AuthenticationResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<HomeResponse> getHomeData() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<HomeResponse>(
+        Options(method: 'GET', headers: _headers, extra: _extra)
+            .compose(_dio.options, '/home', queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = HomeResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<StoreDetailsResponse> getStoreDetails() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<StoreDetailsResponse>(
+        Options(method: 'GET', headers: _headers, extra: _extra)
+            .compose(_dio.options, '/storeDetails/1', queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = StoreDetailsResponse.fromJson(_result.data!);
     return value;
   }
 

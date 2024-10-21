@@ -138,7 +138,12 @@ extension FlowStateExtension on FlowState {
     }
   }
 
+  //fe moshklaa hnaaa...
+  // lma bstkhdm awl line da byb2a sh8al fe cases kolha m3ada case bydrb  error..
   _isCurrentDialogShowing(BuildContext context) => Navigator.of(context, rootNavigator: true).canPop();
+
+  // w lma btkhdm line daaa el haga lle 3mlt error m3 l line el awl btsht8l 3ady
+  // _isCurrentDialogShowing(BuildContext context) => ModalRoute.of(context)?.isCurrent != true;
 
   dismissDialog(BuildContext context) {
     if (_isCurrentDialogShowing(context)) {
