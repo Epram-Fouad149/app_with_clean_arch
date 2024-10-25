@@ -5,6 +5,7 @@ import 'package:app_with_clean_arch/presentation/resources/assets_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/color_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/value_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordView extends StatefulWidget {
@@ -69,9 +70,9 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                       keyboardType: TextInputType.emailAddress,
                       controller: _emailTextEditingController,
                       decoration: InputDecoration(
-                          hintText: AppStrings.emailHint,
-                          labelText: AppStrings.emailHint,
-                          errorText: (snapshot.data ?? true) ? null : AppStrings.invalidEmail),
+                          hintText: AppStrings.emailHint.tr(),
+                          labelText: AppStrings.emailHint.tr(),
+                          errorText: (snapshot.data ?? true) ? null : AppStrings.invalidEmail.tr()),
                     );
                   },
                 ),
@@ -89,7 +90,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                       height: AppSize.s40,
                       child: ElevatedButton(
                           onPressed: (snapshot.data ?? false) ? () => _viewModel.forgotPassword() : null,
-                          child: Text(AppStrings.resetPassword)),
+                          child: Text(AppStrings.resetPassword.tr())),
                     );
                   },
                 ),

@@ -5,6 +5,7 @@ import 'package:app_with_clean_arch/presentation/main/pages/settings/setting_pag
 import 'package:app_with_clean_arch/presentation/resources/color_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/value_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MainView extends StatefulWidget {
@@ -17,13 +18,13 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   List<Widget> pages = [HomePage(), SearchPage(), NotificationsPage(), SettingsPage()];
   List<String> titles = [
-    AppStrings.home,
-    AppStrings.search,
-    AppStrings.notifications,
-    AppStrings.settings,
+    AppStrings.home.tr(),
+    AppStrings.search.tr(),
+    AppStrings.notifications.tr(),
+    AppStrings.settings.tr(),
   ];
 
-  var _title = AppStrings.home;
+  var _title = AppStrings.home.tr();
   var _currentIndex = 0;
 
   @override
@@ -41,10 +42,10 @@ class _MainViewState extends State<MainView> {
           currentIndex: _currentIndex,
           onTap: onTap,
           items: [
-            BottomNavigationBarItem(icon: const Icon(Icons.home_outlined), label: AppStrings.home),
-            BottomNavigationBarItem(icon: const Icon(Icons.search), label: AppStrings.search),
-            BottomNavigationBarItem(icon: const Icon(Icons.notifications), label: AppStrings.notifications),
-            BottomNavigationBarItem(icon: const Icon(Icons.settings), label: AppStrings.settings),
+            BottomNavigationBarItem(icon: const Icon(Icons.home_outlined), label: AppStrings.home.tr()),
+            BottomNavigationBarItem(icon: const Icon(Icons.search), label: AppStrings.search.tr()),
+            BottomNavigationBarItem(icon: const Icon(Icons.notifications), label: AppStrings.notifications.tr()),
+            BottomNavigationBarItem(icon: const Icon(Icons.settings), label: AppStrings.settings.tr()),
           ],
         ),
       ),

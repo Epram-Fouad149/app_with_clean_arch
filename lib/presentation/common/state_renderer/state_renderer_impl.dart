@@ -1,6 +1,7 @@
 import 'package:app_with_clean_arch/app/constants.dart';
 import 'package:app_with_clean_arch/presentation/common/state_renderer/state_renderer.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 abstract class FlowState {
@@ -17,7 +18,7 @@ class LoadingState extends FlowState {
   LoadingState({required this.stateRendererType, String message = AppStrings.loading});
 
   @override
-  String getMessage() => message ?? AppStrings.loading;
+  String getMessage() => message ?? AppStrings.loading.tr();
 
   @override
   StateRendererType getStateRendererType() => stateRendererType;
@@ -126,7 +127,7 @@ extension FlowStateExtension on FlowState {
           dismissDialog(context);
 
           // show popup
-          showPopup(context, StateRendererType.popupSuccess, getMessage(), title: AppStrings.success);
+          showPopup(context, StateRendererType.popupSuccess, getMessage(), title: AppStrings.success.tr());
           // return content ui of the screen
           return contentScreenWidget;
         }

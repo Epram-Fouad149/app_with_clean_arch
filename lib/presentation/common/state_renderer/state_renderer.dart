@@ -4,6 +4,7 @@ import 'package:app_with_clean_arch/presentation/resources/font_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/styles_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/value_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -43,14 +44,14 @@ class StateRenderer extends StatelessWidget {
         return _getPopUpDialog(context, [_getAnimatedImage(JsonAssets.loading)]);
       case StateRendererType.popupErrorState:
         return _getPopUpDialog(context,
-            [_getAnimatedImage(JsonAssets.error), _getMessage(message), _getRetryButton(AppStrings.ok, context)]);
+            [_getAnimatedImage(JsonAssets.error), _getMessage(message), _getRetryButton(AppStrings.ok.tr(), context)]);
       case StateRendererType.fullScreenLoadingState:
         return _getItemsColumn([_getAnimatedImage(JsonAssets.loading), _getMessage(message)]);
       case StateRendererType.fullScreenErrorState:
         return _getItemsColumn([
           _getAnimatedImage(JsonAssets.error),
           _getMessage(message),
-          _getRetryButton(AppStrings.retryAgain, context)
+          _getRetryButton(AppStrings.retryAgain.tr(), context)
         ]);
       case StateRendererType.fullScreenEmptyState:
         return _getItemsColumn([_getAnimatedImage(JsonAssets.empty), _getMessage(message)]);
@@ -61,7 +62,7 @@ class StateRenderer extends StatelessWidget {
           _getAnimatedImage(JsonAssets.success),
           _getMessage(title),
           _getMessage(message),
-          _getRetryButton(AppStrings.ok, context)
+          _getRetryButton(AppStrings.ok.tr(), context)
         ]);
       default:
         return Container();

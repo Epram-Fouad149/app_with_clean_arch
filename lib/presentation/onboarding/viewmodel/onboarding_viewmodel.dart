@@ -4,6 +4,7 @@ import 'package:app_with_clean_arch/domain/model/models.dart';
 import 'package:app_with_clean_arch/presentation/base/base_viewmodel.dart';
 import 'package:app_with_clean_arch/presentation/resources/assets_manager.dart';
 import 'package:app_with_clean_arch/presentation/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class OnBoardingViewModel extends BaseViewModel implements OnBoardingViewModelInputs, OnBoardingViewModelOutputs {
   // stream controllers outputs
@@ -62,10 +63,14 @@ class OnBoardingViewModel extends BaseViewModel implements OnBoardingViewModelIn
   }
 
   List<SliderObject> _getSliderData() => [
-        SliderObject(AppStrings.onBoardingTitle1, AppStrings.onBoardingSubTitle1, ImageAssets.onboardingLogo1),
-        SliderObject(AppStrings.onBoardingTitle2, AppStrings.onBoardingSubTitle2, ImageAssets.onboardingLogo2),
-        SliderObject(AppStrings.onBoardingTitle3, AppStrings.onBoardingSubTitle3, ImageAssets.onboardingLogo3),
-        SliderObject(AppStrings.onBoardingTitle4, AppStrings.onBoardingSubTitle4, ImageAssets.onboardingLogo4),
+        SliderObject(
+            AppStrings.onBoardingTitle1.tr(), AppStrings.onBoardingSubTitle1, ImageAssets.onboardingLogo1.tr()),
+        SliderObject(
+            AppStrings.onBoardingTitle2.tr(), AppStrings.onBoardingSubTitle2, ImageAssets.onboardingLogo2.tr()),
+        SliderObject(
+            AppStrings.onBoardingTitle3.tr(), AppStrings.onBoardingSubTitle3, ImageAssets.onboardingLogo3.tr()),
+        SliderObject(
+            AppStrings.onBoardingTitle4.tr(), AppStrings.onBoardingSubTitle4, ImageAssets.onboardingLogo4.tr()),
       ];
 }
 
