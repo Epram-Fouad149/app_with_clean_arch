@@ -41,6 +41,7 @@ class ErrorState extends FlowState {
 // content state
 
 class ContentState extends FlowState {
+  bool removeContext = true;
   ContentState();
 
   @override
@@ -118,7 +119,7 @@ extension FlowStateExtension on FlowState {
         }
       case ContentState:
         {
-          dismissDialog(context);
+          if ((this as ContentState).removeContext) dismissDialog(context);
           return contentScreenWidget;
         }
       case SuccessState:

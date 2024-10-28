@@ -26,7 +26,9 @@ class StoreDetailsViewModel extends BaseViewModel implements StoreDetailsViewMod
         inputState.add(ErrorState(StateRendererType.fullScreenErrorState, failure.message));
       },
       (storeDetails) async {
-        inputState.add(ContentState());
+        var contentState = ContentState();
+        contentState.removeContext = false;
+        inputState.add(contentState);
         inputStoreDetails.add(storeDetails);
       },
     );
